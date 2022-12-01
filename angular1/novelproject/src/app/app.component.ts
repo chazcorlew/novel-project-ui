@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Novels } from './novels';
 import { NovelsService } from './novels.service';
@@ -18,7 +18,13 @@ export class AppComponent implements OnInit {
   this.getAllNovels();
   }
 
-  public getAllNovels(){
-  this.novelsService.getAllNovels().subscribe({error: console.error});
+  getAllNovels(): void {
+  this.novelsService.getAllNovels().subscribe(
+    (response: Novels[]) => {
+      this.novels = response;
+      console.log(this.novels);
+        },
+  );
+  
   }
 }
