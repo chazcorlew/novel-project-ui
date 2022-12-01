@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { NpstorageService } from './npstorage.service';
+import { NovelsService } from './novels.service';
 
-describe('NpstorageService', () => {
-  let service: NpstorageService;
+describe('NovelsService', () => {
+  let service: NovelsService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(NpstorageService);
+    service = TestBed.inject(NovelsService);
   });
 
   it('should be created', () => {
