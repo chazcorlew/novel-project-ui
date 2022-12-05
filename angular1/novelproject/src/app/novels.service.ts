@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Novels } from './novels';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -12,25 +12,28 @@ export class NovelsService {
 
   constructor(private http: HttpClient) { }
 
-  public getAllNovels(): Observable<Novels[]> {
-    return this.http.get<Novels[]>(`${this.novelServerUrl}/novels/all`);
+  public getAllNovels(): Observable<HttpResponse<Novels[]>>
+  {
+    return this.http.get(`http://localhost:8080/demo/novels`) as Observable<HttpResponse<Novels[]>>;
+   // return this.http.get(`${this.novelServerUrl}/novels`) as Observable<HttpResponse<Novels[]>>;
+    
   }
 
-  public getNovelByNovel(): Observable<Novels> {
-    return this.http.get<Novels>(`${this.novelServerUrl}/novels/novel`);
+  public getNovelByNovel(): Observable<HttpResponse<Novels>> {
+    return this.http.get(`http://localhost:8080/demo/novels/novel`) as Observable<HttpResponse<Novels>>;
   }
 
-  public addNovel(novels: Novels): Observable<Novels> {
-    return this.http.post<Novels>(`${this.novelServerUrl}/novels/addNovel`, novels);
+  public addNovel(novels: Novels): Observable<HttpResponse<Novels>>  {
+    return this.http.post(`http://localhost:8080/demo/novels/addNovel`, novels) as Observable<HttpResponse<Novels>>;
   }
 
-  public updateNovel(novels: Novels): Observable<Novels> {
-    return this.http.put<Novels>(`${this.novelServerUrl}/novels/update`, novels);
+  public updateNovel(novels: Novels): Observable<HttpResponse<Novels>> {
+    return this.http.put(`http://localhost:8080/demo/novels/update`, novels) as Observable<HttpResponse<Novels>>;
   
   }
 
-  public deleteNovel(novelId: number): Observable<void> {
-    return this.http.delete<void>(`${this.novelServerUrl}/novels/delete${novelId}`);
+  public deleteNovel(novelId: number): Observable<HttpResponse<void>>{
+    return this.http.delete(`http//localhost:8080/demo/novels/delete`) as Observable<HttpResponse<void>>;
   }
 }
 

@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
 
   getAllNovels(): void {
   this.novelsService.getAllNovels().subscribe(
-    (response: Novels[]) => {
+    (response: any) => {
       this.novels = response;
       console.log(this.novels);
         },
