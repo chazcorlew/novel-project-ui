@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Novels } from 'src/app/novels';
 
 @Component({
   selector: 'app-novels',
@@ -8,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NovelsComponent implements OnInit {
 
-  constructor(private http:HttpClient) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.http.get("http://localhost8080/");
+    //this.http.get("http://localhost8080/");
   }
 
 }
